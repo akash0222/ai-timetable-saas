@@ -1,0 +1,16 @@
+{
+  "name": "ai-timetable-saas",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "node server/index.js",
+    "client": "npm --prefix client run dev"
+  },
+  "dependencies": {
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.1"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}
