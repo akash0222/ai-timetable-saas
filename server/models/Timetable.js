@@ -1,11 +1,8 @@
 import mongoose from "mongoose";
 
 const timetableSchema = new mongoose.Schema({
-  data: { type: Object, required: true },
-  userId: Number,
-  createdAt: { type: Date, default: Date.now }
+  slots: Array,
+  generatedData: Object
 });
 
-const Timetable = mongoose.model("Timetable", timetableSchema);
-
-export default Timetable;
+export default mongoose.model("Timetable", timetableSchema);
