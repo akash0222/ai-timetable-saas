@@ -1,9 +1,8 @@
 import express from "express";
-import { generateTimetable } from "../controllers/timetableController.js";
-import { protect } from "../middleware/authMiddleware.js";
+import { createTimetable } from "../controllers/timetableController.js";
 
 const router = express.Router();
 
-router.post("/generate", protect, generateTimetable);
+router.post("/generate", createTimetable);
 
 export default router;

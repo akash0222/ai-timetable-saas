@@ -1,23 +1,13 @@
-import Timetable from "../models/Timetable.js";
+import { generateTimetable } from "../services/timetableService.js";
 
-export const generateTimetable = async (req, res) => {
-  const { subjects, slots } = req.body;
+export const createTimetable = (req, res) => {
+  try {
+    const { subjects, teachers, slots } = req.body;
 
-  let timetable = {};
+    const timetable = generateTimetable(subjects, teachers, slots);
 
-  for (let slot of slots) {
-    for (let subject of subjects) {
-      if (!timetable[slot]) {
-        timetable[slot] = subject.name;
-        break;
-      }
-    }
+    res.json(timetable);
+  } catch (err) {
+    res.status(500).json(err.message);
   }
-
-  const saved = await Timetable.create({
-    slots,
-    generatedData: timetable
-  });
-
-  res.json(saved);
 };
